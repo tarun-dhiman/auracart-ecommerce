@@ -169,7 +169,7 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL']) || env('VERCEL') ? true : null),
 
     /*
     |--------------------------------------------------------------------------
