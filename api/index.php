@@ -4,6 +4,15 @@ ini_set('display_errors', '0');
 ini_set('display_startup_errors', '0');
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
+// Ensure HTTPS is recognized in Vercel Serverless environment
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+    $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
+}
+
 try {
     if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
         header('Content-Type: text/plain; charset=utf-8');

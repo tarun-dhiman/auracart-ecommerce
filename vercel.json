@@ -30,6 +30,8 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
+    "APP_URL": "https://auracart-ecommerce-three.vercel.app",
+    "ASSET_URL": "https://auracart-ecommerce-three.vercel.app",
     "APP_KEY": "base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=",
     "VERCEL": "1",
     "LARAVEL_STORAGE_PATH": "/tmp/storage",

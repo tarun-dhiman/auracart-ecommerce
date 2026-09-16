@@ -22,7 +22,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('register') }}" class="space-y-4">
+        <form method="POST" action="" class="space-y-4">
             @csrf
             <div>
                 <label for="name" class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>

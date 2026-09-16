@@ -61,7 +61,7 @@
             </button>
         </div>
 
-        <form method="POST" action="{{ route('admin.login') }}" class="space-y-4">
+        <form method="POST" action="" class="space-y-4">
             @csrf
             <div>
                 <label for="email" class="block text-xs font-bold text-slate-300 mb-1">Admin Email Address</label>
