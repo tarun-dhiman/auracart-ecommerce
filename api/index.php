@@ -42,6 +42,18 @@ try {
     $_SERVER['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
     putenv('APP_PACKAGES_CACHE=/tmp/storage/bootstrap/packages.php');
 
+    if (!file_exists('/tmp/storage/bootstrap/packages.php')) {
+        $cleanManifest = [
+            'laravel/tinker' => [
+                'providers' => ['Laravel\\Tinker\\TinkerServiceProvider'],
+            ],
+            'nesbot/carbon' => [
+                'providers' => ['Carbon\\Laravel\\ServiceProvider'],
+            ],
+        ];
+        @file_put_contents('/tmp/storage/bootstrap/packages.php', '<?php return ' . var_export($cleanManifest, true) . ';');
+    }
+
     $_ENV['APP_SERVICES_CACHE'] = '/tmp/storage/bootstrap/services.php';
     $_SERVER['APP_SERVICES_CACHE'] = '/tmp/storage/bootstrap/services.php';
     putenv('APP_SERVICES_CACHE=/tmp/storage/bootstrap/services.php');
