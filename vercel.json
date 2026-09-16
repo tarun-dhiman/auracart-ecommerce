@@ -38,6 +38,7 @@
     "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
     "LOG_CHANNEL": "stderr",
     "SESSION_DRIVER": "database",
+    "SESSION_LIFETIME": "120",
     "CACHE_STORE": "array",
     "DB_CONNECTION": "mysql",
     "DB_HOST": "gateway01.ap-southeast-1.prod.aws.tidbcloud.com",

@@ -50,6 +50,18 @@ try {
     $_SERVER['APP_MAINTENANCE_DRIVER'] = 'file';
     putenv('APP_MAINTENANCE_DRIVER=file');
 
+    $_ENV['SESSION_LIFETIME'] = '120';
+    $_SERVER['SESSION_LIFETIME'] = '120';
+    putenv('SESSION_LIFETIME=120');
+
+    $_ENV['SESSION_DRIVER'] = 'database';
+    $_SERVER['SESSION_DRIVER'] = 'database';
+    putenv('SESSION_DRIVER=database');
+
+    $_ENV['SESSION_COOKIE'] = 'auracart_session';
+    $_SERVER['SESSION_COOKIE'] = 'auracart_session';
+    putenv('SESSION_COOKIE=auracart_session');
+
     // Direct bootstrap cache files to writable /tmp directory
     $_ENV['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
     $_SERVER['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
