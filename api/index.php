@@ -1,15 +1,14 @@
 <?php
 
-// Force debug mode to reveal any runtime issues
-putenv('APP_DEBUG=true');
-$_ENV['APP_DEBUG'] = 'true';
-$_SERVER['APP_DEBUG'] = 'true';
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-// Fallback APP_KEY if missing from Vercel environment variables
-if (empty($_ENV['APP_KEY']) && empty(getenv('APP_KEY'))) {
-    putenv('APP_KEY=base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=');
-    $_ENV['APP_KEY'] = 'base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=';
-    $_SERVER['APP_KEY'] = 'base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=';
+if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "DIAGNOSTIC: vendor/autoload.php DOES NOT EXIST on Vercel!\n";
+    echo "Files in root: " . implode(', ', scandir(__DIR__ . '/..')) . "\n";
+    exit;
 }
 
 // Ensure /tmp storage paths exist for Vercel Serverless environment
