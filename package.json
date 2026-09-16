@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "vite build && node -e \"import('node:fs').then(m=>m.mkdirSync('dist',{recursive:true}))\"",
         "dev": "vite"
     },
     "devDependencies": {
