@@ -37,14 +37,7 @@ try {
     $_SERVER['VIEW_COMPILED_PATH'] = '/tmp/storage/framework/views';
     putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
-    // Bootstrap cache redirection
-    if (file_exists(__DIR__ . '/../bootstrap/cache/packages.php') && !file_exists('/tmp/storage/bootstrap/packages.php')) {
-        @copy(__DIR__ . '/../bootstrap/cache/packages.php', '/tmp/storage/bootstrap/packages.php');
-    }
-    if (file_exists(__DIR__ . '/../bootstrap/cache/services.php') && !file_exists('/tmp/storage/bootstrap/services.php')) {
-        @copy(__DIR__ . '/../bootstrap/cache/services.php', '/tmp/storage/bootstrap/services.php');
-    }
-
+    // Direct bootstrap cache files to writable /tmp directory
     $_ENV['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
     $_SERVER['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
     putenv('APP_PACKAGES_CACHE=/tmp/storage/bootstrap/packages.php');
@@ -52,6 +45,18 @@ try {
     $_ENV['APP_SERVICES_CACHE'] = '/tmp/storage/bootstrap/services.php';
     $_SERVER['APP_SERVICES_CACHE'] = '/tmp/storage/bootstrap/services.php';
     putenv('APP_SERVICES_CACHE=/tmp/storage/bootstrap/services.php');
+
+    $_ENV['APP_CONFIG_CACHE'] = '/tmp/storage/bootstrap/config.php';
+    $_SERVER['APP_CONFIG_CACHE'] = '/tmp/storage/bootstrap/config.php';
+    putenv('APP_CONFIG_CACHE=/tmp/storage/bootstrap/config.php');
+
+    $_ENV['APP_ROUTES_CACHE'] = '/tmp/storage/bootstrap/routes.php';
+    $_SERVER['APP_ROUTES_CACHE'] = '/tmp/storage/bootstrap/routes.php';
+    putenv('APP_ROUTES_CACHE=/tmp/storage/bootstrap/routes.php');
+
+    $_ENV['APP_EVENTS_CACHE'] = '/tmp/storage/bootstrap/events.php';
+    $_SERVER['APP_EVENTS_CACHE'] = '/tmp/storage/bootstrap/events.php';
+    putenv('APP_EVENTS_CACHE=/tmp/storage/bootstrap/events.php');
 
     // Forward execution to Laravel's front controller
     require __DIR__ . '/../public/index.php';
