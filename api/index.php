@@ -1,5 +1,17 @@
 <?php
 
+// Force debug mode to reveal any runtime issues
+putenv('APP_DEBUG=true');
+$_ENV['APP_DEBUG'] = 'true';
+$_SERVER['APP_DEBUG'] = 'true';
+
+// Fallback APP_KEY if missing from Vercel environment variables
+if (empty($_ENV['APP_KEY']) && empty(getenv('APP_KEY'))) {
+    putenv('APP_KEY=base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=');
+    $_ENV['APP_KEY'] = 'base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=';
+    $_SERVER['APP_KEY'] = 'base64:4cvTyTyZpzyANCutIJSgLknAo/lOLD07vuWjQNdtwLM=';
+}
+
 // Ensure /tmp storage paths exist for Vercel Serverless environment
 $dirs = [
     '/tmp/storage/app/public',
