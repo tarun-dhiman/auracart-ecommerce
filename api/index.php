@@ -37,6 +37,10 @@ try {
     $_SERVER['VIEW_COMPILED_PATH'] = '/tmp/storage/framework/views';
     putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
+    $_ENV['APP_MAINTENANCE_DRIVER'] = 'file';
+    $_SERVER['APP_MAINTENANCE_DRIVER'] = 'file';
+    putenv('APP_MAINTENANCE_DRIVER=file');
+
     // Direct bootstrap cache files to writable /tmp directory
     $_ENV['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
     $_SERVER['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/packages.php';
